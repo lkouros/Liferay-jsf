@@ -18,6 +18,7 @@ import java.util.List;
 
 import com.liferay.docs.guestbook.model.Guestbook;
 import com.liferay.docs.guestbook.service.base.GuestbookLocalServiceBaseImpl;
+import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
 
 /**
@@ -49,11 +50,16 @@ public class GuestbookLocalServiceImpl extends GuestbookLocalServiceBaseImpl {
 	 }
 	 
 	 @Override
-	 public Guestbook addGuestbook(Guestbook guestbook) throws SystemException {
+	 public Guestbook addGuestbook(Guestbook guestbook, long userId) throws PortalException, SystemException {
 	     long guestbookId = counterLocalService.increment(Guestbook.class.getName());
 	     guestbook.setGuestbookId(guestbookId);
 
-	     return super.addGuestbook(guestbook);
+	     guestbook = super.addGuestbook(guestbook);
+
+	     resourceLocalService.addResources(guestbook.getCompanyId(), guestbook.getGroupId(), userId,
+	         Guestbook.class.getName(), guestbookId, false, true, true);
+
+	     return guestbook;
 	 }
 	 
 	 public Guestbook getFirstGuestbookByName(long groupId, String name) throws SystemException {

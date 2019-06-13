@@ -129,6 +129,24 @@ public class GuestbookLocalServiceClpInvoker {
 		_methodName43 = "setBeanIdentifier";
 
 		_methodParameterTypes43 = new String[] { "java.lang.String" };
+
+		_methodName48 = "getGuestbooks";
+
+		_methodParameterTypes48 = new String[] { "long" };
+
+		_methodName49 = "getGuestbooks";
+
+		_methodParameterTypes49 = new String[] { "long", "int", "int" };
+
+		_methodName50 = "addGuestbook";
+
+		_methodParameterTypes50 = new String[] {
+				"com.liferay.docs.guestbook.model.Guestbook", "long"
+			};
+
+		_methodName51 = "getFirstGuestbookByName";
+
+		_methodParameterTypes51 = new String[] { "long", "java.lang.String" };
 	}
 
 	public Object invokeMethod(String name, String[] parameterTypes,
@@ -256,6 +274,30 @@ public class GuestbookLocalServiceClpInvoker {
 			return null;
 		}
 
+		if (_methodName48.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes48, parameterTypes)) {
+			return GuestbookLocalServiceUtil.getGuestbooks(((Long)arguments[0]).longValue());
+		}
+
+		if (_methodName49.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes49, parameterTypes)) {
+			return GuestbookLocalServiceUtil.getGuestbooks(((Long)arguments[0]).longValue(),
+				((Integer)arguments[1]).intValue(),
+				((Integer)arguments[2]).intValue());
+		}
+
+		if (_methodName50.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes50, parameterTypes)) {
+			return GuestbookLocalServiceUtil.addGuestbook((com.liferay.docs.guestbook.model.Guestbook)arguments[0],
+				((Long)arguments[1]).longValue());
+		}
+
+		if (_methodName51.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes51, parameterTypes)) {
+			return GuestbookLocalServiceUtil.getFirstGuestbookByName(((Long)arguments[0]).longValue(),
+				(java.lang.String)arguments[1]);
+		}
+
 		throw new UnsupportedOperationException();
 	}
 
@@ -303,4 +345,12 @@ public class GuestbookLocalServiceClpInvoker {
 	private String[] _methodParameterTypes42;
 	private String _methodName43;
 	private String[] _methodParameterTypes43;
+	private String _methodName48;
+	private String[] _methodParameterTypes48;
+	private String _methodName49;
+	private String[] _methodParameterTypes49;
+	private String _methodName50;
+	private String[] _methodParameterTypes50;
+	private String _methodName51;
+	private String[] _methodParameterTypes51;
 }

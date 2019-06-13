@@ -18,7 +18,10 @@ import java.util.List;
 
 import com.liferay.docs.guestbook.model.Entry;
 import com.liferay.docs.guestbook.service.base.EntryLocalServiceBaseImpl;
+import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
+
+
 
 /**
  * The implementation of the entry local service.
@@ -49,11 +52,16 @@ public class EntryLocalServiceImpl extends EntryLocalServiceBaseImpl {
 	 }
 	 
 	 @Override
-	 public Entry addEntry(Entry entry) throws SystemException {
+	 public Entry addEntry(Entry entry, long userId) throws PortalException, SystemException {
 	     long entryId = counterLocalService.increment(Entry.class.getName());
 	     entry.setEntryId(entryId);
 
-	     return super.addEntry(entry);
+	     entry = super.addEntry(entry);
+
+	     resourceLocalService.addResources(entry.getCompanyId(), entry.getGroupId(), userId, Entry.class.getName(),
+	         entryId, false, true, true);
+
+	     return entry;
 	 }
 	 
 	 public int getEntriesCount(long groupId, long guestbookId) throws SystemException {

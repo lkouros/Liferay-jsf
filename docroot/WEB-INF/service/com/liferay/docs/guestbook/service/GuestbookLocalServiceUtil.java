@@ -335,6 +335,31 @@ public class GuestbookLocalServiceUtil {
 		return getService().invokeMethod(name, parameterTypes, arguments);
 	}
 
+	public static java.util.List<com.liferay.docs.guestbook.model.Guestbook> getGuestbooks(
+		long groupId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().getGuestbooks(groupId);
+	}
+
+	public static java.util.List<com.liferay.docs.guestbook.model.Guestbook> getGuestbooks(
+		long groupId, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().getGuestbooks(groupId, start, end);
+	}
+
+	public static com.liferay.docs.guestbook.model.Guestbook addGuestbook(
+		com.liferay.docs.guestbook.model.Guestbook guestbook, long userId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService().addGuestbook(guestbook, userId);
+	}
+
+	public static com.liferay.docs.guestbook.model.Guestbook getFirstGuestbookByName(
+		long groupId, java.lang.String name)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().getFirstGuestbookByName(groupId, name);
+	}
+
 	public static void clearService() {
 		_service = null;
 	}
