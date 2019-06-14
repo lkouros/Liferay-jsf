@@ -34,6 +34,7 @@ public class GuestbookBacking extends AbstractBacking {
 	private Entry selectedEntry;
 	private List<Entry> entries;
 
+	
 	private boolean editingGuestbook;
 	private boolean editingEntry;
 
