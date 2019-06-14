@@ -86,12 +86,14 @@ public interface GuestbookLocalService extends BaseLocalService,
 	*
 	* @param guestbook the guestbook
 	* @return the guestbook that was removed
+	* @throws PortalException
 	* @throws SystemException if a system exception occurred
 	*/
 	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.DELETE)
 	public com.liferay.docs.guestbook.model.Guestbook deleteGuestbook(
 		com.liferay.docs.guestbook.model.Guestbook guestbook)
-		throws com.liferay.portal.kernel.exception.SystemException;
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
 
 	public com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery();
 

@@ -131,6 +131,12 @@ public class EntryLocalServiceClpInvoker {
 		_methodName47 = "getEntriesCount";
 
 		_methodParameterTypes47 = new String[] { "long", "long" };
+
+		_methodName48 = "deleteEntry";
+
+		_methodParameterTypes48 = new String[] {
+				"com.liferay.docs.guestbook.model.Entry"
+			};
 	}
 
 	public Object invokeMethod(String name, String[] parameterTypes,
@@ -260,6 +266,11 @@ public class EntryLocalServiceClpInvoker {
 				((Long)arguments[1]).longValue());
 		}
 
+		if (_methodName48.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes48, parameterTypes)) {
+			return EntryLocalServiceUtil.deleteEntry((com.liferay.docs.guestbook.model.Entry)arguments[0]);
+		}
+
 		throw new UnsupportedOperationException();
 	}
 
@@ -307,4 +318,6 @@ public class EntryLocalServiceClpInvoker {
 	private String[] _methodParameterTypes46;
 	private String _methodName47;
 	private String[] _methodParameterTypes47;
+	private String _methodName48;
+	private String[] _methodParameterTypes48;
 }

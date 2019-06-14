@@ -17,3 +17,6 @@
     border-top-right-radius: 4px;
     font-weight: bold;
 }
+#portlet_guestbookJsf_WAR_guestbookjsfportlet .table-cell{
+	color:white;
+}

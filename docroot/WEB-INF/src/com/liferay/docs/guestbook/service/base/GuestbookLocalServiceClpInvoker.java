@@ -147,6 +147,12 @@ public class GuestbookLocalServiceClpInvoker {
 		_methodName51 = "getFirstGuestbookByName";
 
 		_methodParameterTypes51 = new String[] { "long", "java.lang.String" };
+
+		_methodName52 = "deleteGuestbook";
+
+		_methodParameterTypes52 = new String[] {
+				"com.liferay.docs.guestbook.model.Guestbook"
+			};
 	}
 
 	public Object invokeMethod(String name, String[] parameterTypes,
@@ -298,6 +304,11 @@ public class GuestbookLocalServiceClpInvoker {
 				(java.lang.String)arguments[1]);
 		}
 
+		if (_methodName52.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes52, parameterTypes)) {
+			return GuestbookLocalServiceUtil.deleteGuestbook((com.liferay.docs.guestbook.model.Guestbook)arguments[0]);
+		}
+
 		throw new UnsupportedOperationException();
 	}
 
@@ -353,4 +364,6 @@ public class GuestbookLocalServiceClpInvoker {
 	private String[] _methodParameterTypes50;
 	private String _methodName51;
 	private String[] _methodParameterTypes51;
+	private String _methodName52;
+	private String[] _methodParameterTypes52;
 }

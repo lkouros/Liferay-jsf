@@ -20,6 +20,7 @@ import com.liferay.docs.guestbook.model.Entry;
 import com.liferay.docs.guestbook.service.base.EntryLocalServiceBaseImpl;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.portal.model.ResourceConstants;
 
 
 
@@ -67,4 +68,15 @@ public class EntryLocalServiceImpl extends EntryLocalServiceBaseImpl {
 	 public int getEntriesCount(long groupId, long guestbookId) throws SystemException {
 	     return entryPersistence.countByG_G(groupId, guestbookId);
 	 }
+	 
+	 @Override
+	 public Entry deleteEntry(Entry entry) throws PortalException, SystemException {
+
+	     resourceLocalService.deleteResource(entry.getCompanyId(), Entry.class.getName(),
+	         ResourceConstants.SCOPE_INDIVIDUAL, entry.getPrimaryKey());
+
+	     return super.deleteEntry(entry);
+	 }
+	 
+	 
 }

@@ -20,6 +20,7 @@ import com.liferay.docs.guestbook.model.Guestbook;
 import com.liferay.docs.guestbook.service.base.GuestbookLocalServiceBaseImpl;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.portal.model.ResourceConstants;
 
 /**
  * The implementation of the guestbook local service.
@@ -73,4 +74,9 @@ public class GuestbookLocalServiceImpl extends GuestbookLocalServiceBaseImpl {
 	     return guestbook;
 	 }
 	 
+	 @Override
+	 public Guestbook deleteGuestbook(Guestbook guestbook) throws PortalException, SystemException {
+		 resourceLocalService.deleteResource(guestbook.getCompanyId(), Guestbook.class.getName(),ResourceConstants.SCOPE_INDIVIDUAL,guestbook.getPrimaryKey());
+		 return super.deleteGuestbook(guestbook);
+	 }
 }
